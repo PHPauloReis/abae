@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+body {
+	background-color: #FFFFFF;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	line-height: 22px;
+	padding: 25px;
+}
+
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+pre {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+a {
+	color: #121b21;
+}
+
+@font-face {
+
+     font-family: myriad;
+     src: url('myriadc.ttf');
+     
+}
+
+@font-face {
+     
+     font-family: myriad_pro;
+     src: url('MyriadPro-Cond.otf');
+     
+}
+
+h1 {
+	font-family: myriad_pro, myriad, tahoma;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 36px;
+	margin: 10px 0px 13px 0px;
+	text-align: justify;
+}
+
+.example1 {
+	font-weight: bold;
+	font-size: 13px
+}
+
+.example2 {
+	font-weight: bold;
+	font-size: 13px;
+	color: #FF0000
+}
+
+.tablerow1 {
+	background-color: #BBBBBB;
+}
+
+thead {
+	background-color: #FFBBBB;
+}
+
+tfoot {
+	background-color: #BBBBFF;
+}
+
+th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}

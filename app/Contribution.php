@@ -1,0 +1,20 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Contribution extends Model
+{
+    use SoftDeletes;
+
+    protected $fillable = [
+        'customer_id',
+        'payment_date',
+        'value',
+        'month',
+        'year',
+        'received_by'
+    ];
+}

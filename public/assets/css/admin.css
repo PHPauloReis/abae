@@ -1,0 +1,152 @@
+body, p, h1, h2, h3, h4, h5, h6, a, div, table, tr, th, td, input, textarea, select {
+	font-family: "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+body, p, table, th, tr, td, input, textarea, select, .dropdown-menu > li {
+	font-size: 16px !important;
+}
+
+.item-gallery {
+	min-height: 280px;
+}
+
+.thumbnail {
+	margin-bottom: 5px;
+}
+
+@media (min-width: 992px) {
+
+	.nopadding {
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	.nopadding_right {
+		padding-right: 0 !important;
+		margin: 0 !important;
+	}
+
+	.nopadding_left {
+		padding-left: 0 !important;
+	}
+
+	.nopadding label,
+	.nopadding_left label,
+	.nopadding_right label {
+		margin-top: 0px;
+	}
+
+	.sidebar {
+		padding-left: 20px !important;
+	}
+
+}
+
+/* =========== CSS customizado para o Select 2 =========== */
+
+.select2-choice {
+	height: 43px !important;
+}
+
+.select2-choice {
+	border: 2px solid #dce4ec !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+.select2-chosen {
+	padding: 8px 15px !important;
+	color: #A9B3BD;
+}
+
+.select2-drop-active {
+	margin-top: -2px !important;
+	border: 2px solid #dce4ec !important;
+	border-top: none !important;
+	box-shadow: none;
+}
+
+/* ======================================================== */
+
+.nopadding {
+	margin-bottom: 20px !important;
+}
+
+.sidebar {
+	padding-left: 0px;
+}
+
+.navbar {
+	border-radius: 0;
+}
+
+.nomargin_botton {
+	margin-bottom: 0px;
+}
+
+.container_busca {
+	margin-bottom: 25px;
+}
+
+.representante_container_lateral {
+	margin-bottom: 15px !important;
+}
+
+.datepicker-days {
+	padding: 3px 10px !important;
+}
+
+#bt_show_hide_dados_cliente {
+	margin-bottom: 20px;
+}
+
+.red-text {
+	color: #FF0000;
+}
+
+/*
+Google Material Icon
+*/
+
+.material-icons {
+	float: left;
+	margin-right: 5px;
+}
+
+.material-icons.md-18 { font-size: 18px; width: 18px; height: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+
+.thick-line {
+	border-color: #CCCCCC !important;
+}
+
+.table-budget {
+	margin-bottom: 0px;
+}
+
+.invoice-title {
+	margin-top: 15px;
+}
+
+.btn-budget {
+	font-size: 18px !important;
+	margin-right: 0px !important;
+}
