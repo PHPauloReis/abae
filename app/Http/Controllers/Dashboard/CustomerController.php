@@ -30,18 +30,26 @@ class CustomerController extends Controller
         return view('dashboard.customer.index', compact('customers'));
     }
 
+    public function search()
+    {
+        $data = $this->request->get('keywords');
+        $customers = $this->customerRepository->searchActive($data);
+
+        return view('dashboard.customer.index', compact('customers'));
+    }
+
     public function listDowned()
     {
         $customers = $this->customerRepository->getDowned(10);
         return view('dashboard.customer.listDowned', compact('customers'));
     }
 
-    public function search()
+    public function searchDowned()
     {
         $data = $this->request->get('keywords');
-        $customers = $this->customerRepository->search($data);
+        $customers = $this->customerRepository->searchDowned($data);
 
-        return view('dashboard.customer.index', compact('customers'));
+        return view('dashboard.customer.listDowned', compact('customers'));
     }
 
     /**

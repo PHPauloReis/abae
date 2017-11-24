@@ -19,7 +19,7 @@
 
                     <div class="panel-body">
 
-                        <form action="{!! route('customer.search') !!}" method="get">
+                        <form action="{!! route('customer.downed.search') !!}" method="get">
 
                             <div class="input-group container_busca">
                                 <input type="text" class="form-control" placeholder="O que você procura?" name="keywords" value="{{ Request::get('keywords') }}">

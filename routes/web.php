@@ -31,6 +31,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:access-erp'
     // Clientes
     Route::get('customer/search', ['as' => 'customer.search', 'uses' => 'Dashboard\CustomerController@search']);
     Route::get('customer/downed', ['as' => 'customer.downed', 'uses' => 'Dashboard\CustomerController@listDowned']);
+    Route::get('customer/downed/search', ['as' => 'customer.downed.search', 'uses' => 'Dashboard\CustomerController@searchDowned']);
     Route::resource('customer', 'Dashboard\CustomerController');
     Route::patch('customer/down/{id}', ['as' => 'customer.down', 'uses' => 'Dashboard\CustomerController@down']);
 

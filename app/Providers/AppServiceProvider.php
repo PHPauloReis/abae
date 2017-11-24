@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Validator;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,6 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
+
         Validator::extend('greater_than', function($attribute, $value, $params, $validator){
             $other = Request::get($params[0]);
             return intval($value) > intval($other);

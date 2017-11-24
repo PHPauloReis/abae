@@ -20,7 +20,7 @@
                     <div class="panel-body">
 
                         <form action="{!! route('customer.search') !!}" method="get">
-
+                            
                             <div class="input-group container_busca">
                                 <input type="text" class="form-control" placeholder="O que você procura?" name="keywords" value="{{ Request::get('keywords') }}">
                                 <span class="input-group-btn">
@@ -129,7 +129,7 @@
 
                     <ul class="pagination">
                         @if($customers->count() > 0)
-                        {!! $customers->links() !!}
+                        {!! $customers->appends(request()->all())->links() !!}
                         @endif
                     </ul>
 

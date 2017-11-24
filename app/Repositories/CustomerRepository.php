@@ -26,7 +26,7 @@ class CustomerRepository extends BaseRepository
             ->select('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
             ->join('contributions', 'contributions.customer_id', '=', 'customers.id', 'inner')
             ->where('active', 'Y')
-            ->groupBy('customers.id')
+            ->groupBy('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
             ->paginate($limit);
     }
 
@@ -35,6 +35,43 @@ class CustomerRepository extends BaseRepository
         return $this
             ->model
             ->where('active', 'N')
+            ->paginate($limit);
+    }
+
+    public function searchActive($keywords, $limit = 10)
+    {
+        return $this
+            ->model
+            ->select('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
+            ->where('active', 'Y')
+            ->where(function($query) use ($keywords) {
+                $query->where('name', 'like', '%' . $keywords . '%')
+                ->orWhere('code', $keywords);
+            })
+            ->paginate($limit);
+    }
+
+    public function searchDowned($keywords, $limit = 10)
+    {
+        return $this
+            ->model
+            ->select('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
+            ->where('active', 'N')
+            ->where(function($query) use ($keywords) {
+                $query->where('name', 'like', '%' . $keywords . '%')
+                ->orWhere('code', $keywords);
+            })
+            ->paginate($limit);
+    }
+
+    public function searchCustomersWithoutContribution($keywords, $limit = 10)
+    {
+        return $this
+            ->model
+            ->select('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
+            ->join('contributions', 'contributions.customer_id', '!=', 'customers.id', 'inner')
+            ->where('name', 'like', '%' . $keywords . '%')
+            ->orWhere('code', $keywords)
             ->paginate($limit);
     }
 
@@ -57,7 +94,7 @@ class CustomerRepository extends BaseRepository
                     $query->where('payment_date', '<=', $keywords['keywordDateTo']);
                 }
             })
-            ->groupBy('customers.id')
+            ->groupBy('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
             ->paginate($limit);
     }
 }
