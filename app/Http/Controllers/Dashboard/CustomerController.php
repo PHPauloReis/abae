@@ -74,7 +74,7 @@ class CustomerController extends Controller
         $weekdays = $this->weekdayService->getDays();
 
         // Carrega os locais de atividade
-        $activityLocation = $this->activityLocation->getLocations();
+        $activityLocation = $this->activityLocationService->getLocations();
 
         return view('dashboard.customer.create', compact('weekdays', 'activityLocation'));
     }
