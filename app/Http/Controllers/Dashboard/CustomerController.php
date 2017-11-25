@@ -7,15 +7,26 @@ use App\Http\Requests\CustomerRequest;
 use App\Repositories\CustomerRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use App\Services\WeekdayService;
+use App\Services\ActivityLocationService;
 
 class CustomerController extends Controller
 {
     protected $customerRepository;
+    protected $weekdayService;
+    protected $activityLocationService;
     protected $request;
 
-    public function __construct(CustomerRepository $customerRepository, Request $request)
+    public function __construct(
+        CustomerRepository $customerRepository,
+        WeekdayService $weekdayService,
+        ActivityLocationService $activityLocationService,
+        Request $request
+    )
     {
         $this->customerRepository = $customerRepository;
+        $this->weekdayService = $weekdayService;
+        $this->activityLocationService = $activityLocationService;
         $this->request = $request;
     }
 
@@ -60,22 +71,10 @@ class CustomerController extends Controller
     public function create()
     {
         // Carrega os dias da semana para listar no formulário de cadastro
-        $weekdays = [
-            '' => '---',
-            1 => 'Segunda-feira',
-            2 => 'Terça-feira',
-            3 => 'Quarta-feira',
-            4 => 'Quinta-feira',
-            5 => 'Sexta-feira',
-            6 => 'Sábado'
-        ];
+        $weekdays = $this->weekdayService->getDays();
 
         // Carrega os locais de atividade
-        $activityLocation = [
-            '' => '---',
-            1 => 'Sede',
-            2 => '19BC'
-        ];
+        $activityLocation = $this->activityLocation->getLocations();
 
         return view('dashboard.customer.create', compact('weekdays', 'activityLocation'));
     }
@@ -111,21 +110,11 @@ class CustomerController extends Controller
     {
         $customer = $this->customerRepository->find($id);
 
-        $weekdays = [
-            0 => '',
-            1 => 'Segunda-feira',
-            2 => 'Terça-feira',
-            3 => 'Quarta-feira',
-            4 => 'Quinta-feira',
-            5 => 'Sexta-feira',
-            6 => 'Sábado'
-        ];
+        // Carrega os dias da semana para listar no formulário de cadastro
+        $weekdays = $this->weekdayService->getDays();
 
-        $activityLocations = [
-            0 => '',
-            1 => 'Sede',
-            2 => '19BC'
-        ];
+        // Carrega os locais de atividade
+        $activityLocation = $this->activityLocationService->getLocations();
 
         return view('dashboard.customer.show', compact('customer', 'weekdays', 'activityLocations'));
     }
@@ -139,22 +128,10 @@ class CustomerController extends Controller
     public function edit($id)
     {
         // Carrega os dias da semana para listar no formulário de cadastro
-        $weekdays = [
-            '' => '---',
-            1 => 'Segunda-feira',
-            2 => 'Terça-feira',
-            3 => 'Quarta-feira',
-            4 => 'Quinta-feira',
-            5 => 'Sexta-feira',
-            6 => 'Sábado'
-        ];
+        $weekdays = $this->weekdayService->getDays();
 
         // Carrega os locais de atividade
-        $activityLocation = [
-            '' => '---',
-            1 => 'Sede',
-            2 => '19BC'
-        ];
+        $activityLocation = $this->activityLocationService->getLocations();
 
         $customer = $this->customerRepository->find($id);
 

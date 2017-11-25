@@ -21,7 +21,7 @@ class CreateConstributionsTable extends Migration
             $table->double('value');
             $table->integer('month');
             $table->integer('year');
-            $table->string('received_by');
+            $table->string('received_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('customer_id')->references('id')->on('customers');

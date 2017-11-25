@@ -19,51 +19,35 @@
 
                     <div class="panel-body">
 
-                        <form action="{!! route('contribution.searchCustomersWithContribution') !!}" method="get">
+                        @include('partial.alerts')
 
-                            <div class="row">
-
-                                <div class="form-group col-md-3">
-                                    <label for="keywordCode">Registro do praticante</label>
-                                    <input type="text" class="form-control" placeholder="Registro do praticante" name="keywordCode" value="{{ Request::get('keywordCode') }}">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="keywordName">Nome do praticante</label>
-                                    <input type="text" class="form-control" placeholder="Nome do praticante" name="keywordName" value="{{ Request::get('keywordName') }}">
-                                </div>
-
-                            </div>
+                        {!! Form::open(['route' => ['contribution.store', $customer->id], 'name' => 'contribution', 'id' => 'contribution', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
 
                             <div class="row">
 
                                 <div class="form-group col-md-3">
                                     <label for="paymentDate">Data do pagamento:</label>
-                                    <input type="date" class="form-control" name="paymentDate" value="{{ Request::get('paymentDate') }}">
+                                    {!! Form::date('payment_date', null, ['class' => 'form-control']) !!}
                                 </div>
 
                                 <div class="form-group col-md-3">
                                     <label for="value">Valor pago:</label>
-                                    <input type="text" class="form-control valor" name="value" value="{{ Request::get('value') }}">
+                                    {!! Form::text('value', null, ['class' => 'form-control valor']) !!}
                                 </div>
 
                                 <div class="form-group col-md-3">
                                     <label for="month">Mês (Referência):</label>
-                                    <select class="form-control" name="month">
-                                        <option>---</option>
-                                    </select>
+                                    {!! Form::select('month', $months, null, ['class' => 'form-control']) !!}
                                 </div>
 
                                 <div class="form-group col-md-3">
                                     <label for="year">Ano (Referência):</label>
-                                    <select class="form-control" name="month">
-                                        <option>---</option>
-                                    </select>
+                                    {!! Form::number('year', null, ['class' => 'form-control', 'min' => '2017']) !!}
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="receivedBy">Recebido por</label>
-                                    <input type="text" class="form-control" placeholder="Responsável pelo recebimento" name="receivedBy" value="{{ Request::get('receivedBy') }}">
+                                    {!! Form::text('received_by', null, ['class' => 'form-control']) !!}
                                 </div>
 
                             </div>
@@ -76,7 +60,7 @@
 
                             </div>
 
-                        </form>
+                        {!! Form::close() !!}
 
                     </div>
 
@@ -99,17 +83,15 @@
 
                     <div class="panel-body">
 
-                        @include('partial.alerts')
-
                         <table class="table table-bordered table-striped nomargin_botton">
 
                             <thead>
                             <tr>
                                 <th style="width: 60px;">ID</th>
-                                <th>Registro</th>
-                                <th>Cliente</th>
-                                <th>E-mail</th>
-                                <th>Telefone</th>
+                                <th>Data</th>
+                                <th>Valor</th>
+                                <th>Referente ao mês</th>
+                                <th>Recebido por</th>
                                 <th style="width: 90px;">&nbsp;</th>
                             </tr>
                             </thead>
@@ -119,15 +101,45 @@
                                 @foreach($contributions as $contribution)
                             <tr>
                                 <td>{!! $contribution->id !!}</td>
-                                <td>{!! $contribution->code !!}</td>
-                                <td>{!! $contribution->name !!}</td>
-                                <td>{!! $contribution->email !!}</td>
-                                <td>{!! (!empty($contribution->phone) ? $contribution->phone : $contribution->main_mobile) !!}</td>
+                                <td>{!! $contribution->payment_date->format('d/m/Y') !!}</td>
+                                <td>R$ {!! number_format($contribution->value, 2, ',', '.') !!}</td>
+                                <td>{!! $months[$contribution->month] !!} / {!! $contribution->year !!}</td>
+                                <td>{!! $contribution->received_by !!}</td>
                                 <td>
-                                    <a class="btn btn-danger btn-xs" title="Pagamentos" href="{!! route('contribution.destroy', $contribution->id) !!}"><span class="glyphicon glyphicon-trash"></span> Excluir</a>
+                                    <a class="btn btn-danger btn-xs" title="Apagar" data-toggle="modal" data-target="#myModal_{!! $customer->id !!}"><span class="glyphicon glyphicon-trash"></span> Excluir</a>
+
+                                    <div id="myModal_{!! $customer->id !!}" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_{!! $customer->id !!}" aria-hidden="false">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h4 class="modal-title" id="myModalLabel_{!! $customer->id !!}">Confirmação de exclusão</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Você tem certeza que deseja remover esse registro? Essa operação não poderá ser desfeita. Proceda com cautela</p>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    {{ Form::open(['method' => 'DELETE', 'route' => ['contribution.destroy', $contribution->id]]) }}
+                                                    {{ Form::hidden('id', $contribution->id) }}
+                                                    {{ Form::submit('Sim, desejo prosseguir', ['class' => 'btn btn-danger']) }}
+                                                    {{ Form::submit('Cancelar', ['class' => 'btn btn-primary', 'data-dismiss' => 'modal']) }}
+                                                    {{ Form::close() }}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </td>
                             </tr>
                                 @endforeach
+                            @else
+                            <tr>
+                                <td colspan="5">
+                                    <span style="color: red;">Ainda não há registros de contribuições para esse praticante!</span>
+                                </td>
+                            </tr>
                             @endif
                             </tbody>
 

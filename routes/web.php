@@ -37,6 +37,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:access-erp'
 
     // Contribuições
     Route::get('contribution/create/{id}', ['as' => 'contribution.create', 'uses' => 'Dashboard\ContributionController@create']);
+    Route::post('contributions/store/{id}', ['as' => 'contribution.store', 'uses' => 'Dashboard\ContributionController@store']);
     Route::get('contribution/search-customers-wth-contribution', ['as' => 'contribution.searchCustomersWithContribution', 'uses' => 'Dashboard\ContributionController@searchCustomersWithContribution']);
     Route::get('contribution', ['as' => 'contribution.list.customers', 'uses' => 'Dashboard\ContributionController@listCustomersWithContribution']);
     Route::delete('contribution/{id}', ['as' => 'contribution.destroy', 'uses' => 'Dashboard\ContributionController@destroy']);

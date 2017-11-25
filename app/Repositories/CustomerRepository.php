@@ -26,6 +26,7 @@ class CustomerRepository extends BaseRepository
             ->select('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
             ->join('contributions', 'contributions.customer_id', '=', 'customers.id', 'inner')
             ->where('active', 'Y')
+            ->whereNull('contributions.deleted_at')
             ->groupBy('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
             ->paginate($limit);
     }
@@ -82,8 +83,13 @@ class CustomerRepository extends BaseRepository
             ->select('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
             ->join('contributions', 'contributions.customer_id', '=', 'customers.id', 'inner')
             ->where(function($query) use ($keywords) {
-                $query->where('name', 'like', '%' . $keywords['keywordName'] . '%')
-                ->orWhere('code', $keywords['keywordCode']);
+                if(!empty($keywords['keywordName'])) {
+                    $query->where('name', 'like', '%' . $keywords['keywordName'] . '%');
+                }
+
+                if(!empty($keywords['keywordCode'])) {
+                    $query->where('code', $keywords['keywordCode']);
+                }
             })
             ->where(function($query) use ($keywords) {
                 if(!empty($keywords['keywordDateFrom'])) {

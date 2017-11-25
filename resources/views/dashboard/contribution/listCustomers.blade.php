@@ -14,7 +14,7 @@
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
-                        <h3 class="panel-title">Buscar outras contribuições</h3>
+                        <h3 class="panel-title">Buscar</h3>
                     </div>
 
                     <div class="panel-body">

@@ -81,29 +81,6 @@
                                         </div>
                                     </div>
 
-                                    <div id="myModalBaixa_{!! $customer->id !!}" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalBaixaLabel_{!! $customer->id !!}" aria-hidden="false">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h4 class="modal-title" id="myModalLabel_{!! $customer->id !!}">Confirmação de baixa</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Você tem certeza que deseja realizar a baixa desse registro? Essa operação não poderá ser desfeita. Proceda com cautela</p>
-                                                </div>
-                                                <div class="modal-footer">
-
-                                                    {{ Form::open(['method' => 'PATCH', 'route' => ['customer.down', $customer->id]]) }}
-                                                    {{ Form::hidden('id', $customer->id) }}
-                                                    {{ Form::submit('Sim, desejo prosseguir', ['class' => 'btn btn-danger']) }}
-                                                    {{ Form::submit('Cancelar', ['class' => 'btn btn-primary', 'data-dismiss' => 'modal']) }}
-                                                    {{ Form::close() }}
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </td>
                             </tr>
                                 @endforeach
