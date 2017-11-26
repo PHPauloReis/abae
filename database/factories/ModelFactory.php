@@ -58,3 +58,20 @@ $factory->define(App\Contribution::class, function (Faker\Generator $faker) {
         'received_by' => $faker->name
     ];
 });
+
+$factory->define(App\ChartOfAccount::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->jobTitle(),
+        'description' => $faker->text
+    ];
+});
+
+$factory->define(App\FinancialTransaction::class, function (Faker\Generator $faker) {
+    return [
+        'type' => $faker->numberBetween(1, 2),
+        'chart_of_account_id' => $faker->numberBetween(1, 3),
+        'description' => $faker->text(),
+        'value' => $faker->randomNumber(3),
+        'transaction_date' => $faker->dateTimeBetween('-10 day', '-1 days')
+    ];
+});

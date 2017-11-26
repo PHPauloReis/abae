@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->usersTableSeed();
         $this->customersTableSeed();
+        $this->chartOfAccountTableSeeder();
+        $this->financialTransactionTableSeeder();
     }
 
     private function usersTableSeed()
@@ -30,5 +32,15 @@ class DatabaseSeeder extends Seeder
                 $customer->contributions()->save(factory(App\Contribution::class)->make());
             }
         });
+    }
+
+    private function chartOfAccountTableSeeder()
+    {
+        factory(App\ChartOfAccount::class, 7)->create();
+    }
+
+    private function financialTransactionTableSeeder()
+    {
+        factory(App\FinancialTransaction::class, 3)->create();
     }
 }

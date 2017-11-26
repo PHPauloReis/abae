@@ -85,15 +85,11 @@
                                 </tr>
                                 <tr>
                                     <td>Local da atividade</td>
-                                    <td><code>{!! $customer->activity_location !!}</code></td>
+                                    <td><code>{!! $activityLocations[$customer->activity_location] !!}</code></td>
                                 </tr>
                                 <tr>
                                     <td>Valor da contribuição</td>
-                                    <td><code>{!! $customer->contribution_value !!}</code></td>
-                                </tr>
-                                <tr>
-                                    <td>Local da atividade</td>
-                                    <td><code>{!! $customer->activity_location !!}</code></td>
+                                    <td><code>R$ {!! number_format($customer->contribution_value, 2, ',', '.') !!}</code></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -26,8 +26,7 @@ class AdministratorController extends Controller
         $userRoles = [
             '' => '---',
             1 => 'Administrador Master',
-            2 => 'Operadsor ERP',
-            3 => 'Gerenciador de conteúdo Website'
+            2 => 'Operador',
         ];
 
         return $userRoles;

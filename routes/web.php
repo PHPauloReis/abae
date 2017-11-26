@@ -42,6 +42,15 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:access-erp'
     Route::get('contribution', ['as' => 'contribution.list.customers', 'uses' => 'Dashboard\ContributionController@listCustomersWithContribution']);
     Route::delete('contribution/{id}', ['as' => 'contribution.destroy', 'uses' => 'Dashboard\ContributionController@destroy']);
 
+    // Planos de contas
+    Route::get('chart_of_account/search', ['as' => 'chart_of_account.search', 'uses' => 'Dashboard\ChartOfAccountController@search']);
+    Route::resource('chart_of_account', 'Dashboard\ChartOfAccountController');
+
+    // Caixa
+    Route::get('financial_transaction/payables', ['as' => 'financial_transaction.payables', 'uses' => 'Dashboard\FinancialTransactionController@indexPayable']);
+    Route::get('financial_transaction/receivable', ['as' => 'financial_transaction.receivables', 'uses' => 'Dashboard\FinancialTransactionController@indexReceivable']);
+    Route::resource('financial_transaction', 'Dashboard\FinancialTransactionController');
+
     // Administradores
     Route::get('administrator/search', ['as' => 'administrator.search', 'uses' => 'Dashboard\AdministratorController@search']);
 

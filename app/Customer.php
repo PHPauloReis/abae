@@ -63,9 +63,4 @@ class Customer extends Model
 
         return $dischargeDate->format('Y-m-d');
     }
-
-    public function getContributionValueAttribute()
-    {
-        return number_format($this->attributes['contribution_value'], 2, '', '.');
-    }
 }

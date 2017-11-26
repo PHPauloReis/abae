@@ -30,7 +30,7 @@
         <div class="form-group">
             <label for="gender" class="col-sm-3 control-label">Sexo <span class="red-text">*</span></label>
             <div class="col-sm-3">
-                {!! Form::select('gender', ['' => '---', 'm' => 'Masculino', 'F' => 'Feminino'], null, ['class' => 'form-control', 'id' => 'gender', 'name' => 'gender']) !!}
+                {!! Form::select('gender', ['' => '---', 'm' => 'Masculino', 'f' => 'Feminino'], null, ['class' => 'form-control', 'id' => 'gender', 'name' => 'gender']) !!}
             </div>
         </div>
 
@@ -121,7 +121,7 @@
         <div class="form-group">
             <label for="contribution_value" class="col-sm-3 control-label">Valor da contribuição</label>
             <div class="col-sm-3">
-                {!! Form::text('contribution_value', null, ['class' => 'form-control valor', 'id' => 'contribution_value', 'name' => 'contribution_value', 'placeholder' => 'Valor da contribuição']) !!}
+                {!! Form::number('contribution_value', null, ['class' => 'form-control', 'min' => 0, 'step' => '0.01', 'placeholder' => 'Valor da contribuição']) !!}
             </div>
         </div>
 

@@ -94,10 +94,8 @@
             $(".cep").mask("99999-999");
 
             $(".select2").select2({
-
                 allowClear: true,
                 minimumInputLength: 2
-
             });
 
             $(".valor").priceFormat({
@@ -106,7 +104,6 @@
             });
 
             $(".percentual").priceFormat({
-
                 prefix: '',
                 thousandsSeparator: '',
                 centsLimit: 1
@@ -174,8 +171,6 @@
                         <li class="divider"></li>
                         <li><a href="{!! route('customer.index') !!}">Praticantes ativos</a></li>
                         <li><a href="{!! route('customer.downed') !!}">Praticantes baixados</a></li>
-
-
                     </ul>
                 </li>
                 <li><a href="{!! route('contribution.list.customers') !!}"><span class="glyphicon glyphicon-usd"></span> Constribuições</a></li>
@@ -185,8 +180,10 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="themes">
-                        <li><a href="{!! route('customer.create') !!}">Cadastrar cliente</a></li>
-                        <li><a href="{!! route('customer.index') !!}">Clientes cadastrados</a></li>
+                        <li><a href="{!! route('financial_transaction.create') !!}">Cadastrar conta</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{!! route('financial_transaction.payables') !!}">Contas à pagar</a></li>
+                        <li><a href="{!! route('financial_transaction.receivables') !!}">Contas à receber</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -201,10 +198,19 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">
+                        <span class="glyphicon glyphicon-th-large"></span> Plano de contas
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="themes">
+                        <li><a href="{!! route('chart_of_account.create') !!}">Cadastrar plano de conta</a></li>
+                        <li><a href="{!! route('chart_of_account.index') !!}">Planos de conta cadastrados</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">
                         <span class="glyphicon glyphicon-cog"></span> Configurações
                         <span class="caret"></span>
                     </a>
-
                     <ul class="dropdown-menu" aria-labelledby="themes">
                         <li><a href="{!! route('dashboard.administrator.editPassword') !!}">Atualizar minha senha</a></li>
                         @if(auth()->user()->access_level == 9)
@@ -233,19 +239,6 @@
     </div>
 
 </div>
-
-<!--
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <p class="pull-right text-right">
-                Seja bem-vindo: <strong>{!! Auth::user()->name !!}</strong><br>
-                <span style="color: #CCCCCC;">{!! Auth::user()->email !!}</span>
-            </p>
-        </div>
-    </div>
-</div>
--->
 
 @yield('main')
 
