@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Customer;
+use Illuminate\Support\Facades\DB;
 
 class CustomerRepository extends BaseRepository
 {
@@ -39,30 +40,39 @@ class CustomerRepository extends BaseRepository
             ->paginate($limit);
     }
 
+    public function advancedSearch($filter, $limit = 10)
+    {
+        $customerCollection = $this->model->select(
+            'customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone'
+        );
+
+        if(!empty($filter['idade'])) {
+            $customerCollection->where(DB::raw('TIMESTAMPDIFF(YEAR, `date_of_birth`, NOW())'), '=', $filter['idade']);
+        }
+
+        if(!empty($filter['sexo'])) {
+            $customerCollection->where('gender', '=', $filter['sexo']);
+        }
+
+        if(!empty($filter['dia_pratica'])) {
+            $customerCollection->where('practice_day', '=', $filter['dia_pratica']);
+        }
+
+        if(!empty($filter['local_atividade'])) {
+            $customerCollection->where('activity_location', '=', $filter['local_atividade']);
+        }
+
+        return $customerCollection->paginate($limit);
+    }
+
     public function searchActive($keywords, $limit = 10)
     {
-        return $this
-            ->model
-            ->select('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
-            ->where('active', 'Y')
-            ->where(function($query) use ($keywords) {
-                $query->where('name', 'like', '%' . $keywords . '%')
-                ->orWhere('code', $keywords);
-            })
-            ->paginate($limit);
+        return $this->search($keywords, 'Y', $limit);
     }
 
     public function searchDowned($keywords, $limit = 10)
     {
-        return $this
-            ->model
-            ->select('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
-            ->where('active', 'N')
-            ->where(function($query) use ($keywords) {
-                $query->where('name', 'like', '%' . $keywords . '%')
-                ->orWhere('code', $keywords);
-            })
-            ->paginate($limit);
+        return $this->search($keywords, 'N', $limit);
     }
 
     public function searchCustomersWithoutContribution($keywords, $limit = 10)
@@ -101,6 +111,19 @@ class CustomerRepository extends BaseRepository
                 }
             })
             ->groupBy('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
+            ->paginate($limit);
+    }
+
+    private function search($keywords, $isActive, $limit = 10)
+    {
+        return $this
+            ->model
+            ->select('customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone')
+            ->where('active', $isActive)
+            ->where(function ($query) use ($keywords) {
+                $query->where('name', 'like', '%' . $keywords . '%')
+                    ->orWhere('code', $keywords);
+            })
             ->paginate($limit);
     }
 }

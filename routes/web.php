@@ -51,6 +51,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:access-erp'
     Route::get('financial_transaction/receivable', ['as' => 'financial_transaction.receivables', 'uses' => 'Dashboard\FinancialTransactionController@indexReceivable']);
     Route::resource('financial_transaction', 'Dashboard\FinancialTransactionController');
 
+    // Relatórios
+    Route::get('report/customer', ['as' => 'report.customer', 'uses' => 'Dashboard\ReportController@customer']);
+    Route::get('report/customer/search', ['as' => 'report.customer.search', 'uses' => 'Dashboard\ReportController@searchCustomer']);
+
+    Route::get('report/contribution', ['as' => 'report.contribution', 'uses' => 'Dashboard\ReportController@contribution']);
+    Route::get('report/financial_transaction_to_pay', ['as' => 'report.financial_transaction_to_pay', 'uses' => 'Dashboard\ReportController@financial_transaction_to_pay']);
+    Route::get('report/financial_transaction_to_receive', ['as' => 'report.financial_transaction_to_receive', 'uses' => 'Dashboard\ReportController@financial_transaction_to_receive']);
+
     // Administradores
     Route::get('administrator/search', ['as' => 'administrator.search', 'uses' => 'Dashboard\AdministratorController@search']);
 

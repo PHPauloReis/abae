@@ -46,11 +46,8 @@
     <link rel="stylesheet" href="assets/select2-bootstrap.min.css">
 
     <script type="text/javascript" src="assets/js/jquery.price_format.2.0.min.js"></script>
-
     <script type="text/javascript" src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
-
     <script type="text/javascript" src="assets/fancybox-3.0/dist/jquery.fancybox.min.js"></script>
-
     <script type="text/javascript">
 
         $.fn.select2.defaults.set( "theme", "bootstrap" );
@@ -192,8 +189,10 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="themes">
-                        <li><a href="{!! route('customer.create') !!}">Cadastrar cliente</a></li>
-                        <li><a href="{!! route('customer.index') !!}">Clientes cadastrados</a></li>
+                        <li><a href="{!! route('report.customer') !!}">Praticantes</a></li>
+                        <li><a href="{!! route('customer.index') !!}">Contribuições</a></li>
+                        <li><a href="{!! route('customer.index') !!}">Contas a pagar</a></li>
+                        <li><a href="{!! route('customer.index') !!}">Contas a receber</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
