@@ -40,7 +40,7 @@ class CustomerRepository extends BaseRepository
             ->paginate($limit);
     }
 
-    public function advancedSearch($filter, $limit = 10)
+    public function advancedSearch($filter)
     {
         $customerCollection = $this->model->select(
             'customers.id', 'customers.code', 'customers.name', 'customers.email', 'customers.phone'
@@ -62,7 +62,7 @@ class CustomerRepository extends BaseRepository
             $customerCollection->where('activity_location', '=', $filter['local_atividade']);
         }
 
-        return $customerCollection->paginate($limit);
+        return $customerCollection->get();
     }
 
     public function searchActive($keywords, $limit = 10)

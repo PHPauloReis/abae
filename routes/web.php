@@ -56,6 +56,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:access-erp'
     Route::get('report/customer/search', ['as' => 'report.customer.search', 'uses' => 'Dashboard\ReportController@searchCustomer']);
 
     Route::get('report/contribution', ['as' => 'report.contribution', 'uses' => 'Dashboard\ReportController@contribution']);
+    Route::get('report/contribution/search', ['as' => 'report.contribution.search', 'uses' => 'Dashboard\ReportController@contributionSearch']);
+
     Route::get('report/financial_transaction_to_pay', ['as' => 'report.financial_transaction_to_pay', 'uses' => 'Dashboard\ReportController@financial_transaction_to_pay']);
     Route::get('report/financial_transaction_to_receive', ['as' => 'report.financial_transaction_to_receive', 'uses' => 'Dashboard\ReportController@financial_transaction_to_receive']);
 

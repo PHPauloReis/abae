@@ -73,9 +73,9 @@ class ReportController extends Controller
         return view('dashboard.report.customer', compact('gender', 'weekdays', 'activityLocation', 'customersCollection'));
     }
 
-    public function constribution()
+    public function contribution()
     {
-        return view('dashboard.report.constribution');
+        return view('dashboard.report.contribution');
     }
 
     public function searchContribution()

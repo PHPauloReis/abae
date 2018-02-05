@@ -190,7 +190,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="themes">
                         <li><a href="{!! route('report.customer') !!}">Praticantes</a></li>
-                        <li><a href="{!! route('customer.index') !!}">Contribuições</a></li>
+                        <li><a href="{!! route('report.contribution') !!}">Contribuições</a></li>
                         <li><a href="{!! route('customer.index') !!}">Contas a pagar</a></li>
                         <li><a href="{!! route('customer.index') !!}">Contas a receber</a></li>
                     </ul>

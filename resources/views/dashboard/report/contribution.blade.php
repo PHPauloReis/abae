@@ -3,7 +3,7 @@
 
     <div class="container">
 
-        <h2>Praticantes</h2>
+        <h2>Contribuições</h2>
         <hr>
 
         <!-- Conteudo central -->
@@ -19,7 +19,7 @@
 
                     <div class="panel-body">
 
-                        {!! Form::open(['route' => 'report.customer.search', 'method' => 'get']) !!}
+                        {!! Form::open(['route' => 'report.contribution.search', 'method' => 'get']) !!}
 
                             <div class="col-md- 12">
 
