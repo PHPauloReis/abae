@@ -19,7 +19,7 @@
 
                     <div class="panel-body">
 
-                        {!! Form::open(['route' => 'report.contribution.search', 'method' => 'get']) !!}
+                        {{ Form::open(['route' => 'report.contribution.search', 'method' => 'get']) }}
 
                             <div class="col-md- 12">
 
@@ -27,22 +27,22 @@
 
                                     <div class="col-md-2 form-group">
                                         <label for="idade">Idade</label>
-                                        {!! Form::number('idade', request()->get('idade'), ['class' => 'form-control', 'id' => 'idade']) !!}
+                                        {{ Form::number('idade', request()->get('idade'), ['class' => 'form-control', 'id' => 'idade']) }}
                                     </div>
 
                                     <div class="col-md-2 form-group">
                                         <label for="sexo">Sexo</label>
-                                        {!! Form::select('sexo', $gender, request()->get('sexo'), ['class' => 'form-control', 'id' => 'sexo']) !!}
+                                        {{ Form::select('sexo', $gender, request()->get('sexo'), ['class' => 'form-control', 'id' => 'sexo']) }}
                                     </div>
 
                                     <div class="col-md-3 form-group">
                                         <label for="dia_pratica">Dia da prática</label>
-                                        {!! Form::select('dia_pratica', $weekdays, request()->get('dia_pratica'), ['class' => 'form-control', 'id' => 'dia_pratica']) !!}
+                                        {{ Form::select('dia_pratica', $weekdays, request()->get('dia_pratica'), ['class' => 'form-control', 'id' => 'dia_pratica']) }}
                                     </div>
 
                                     <div class="col-md-3 form-group">
                                         <label for="local_atividade">Local da atividade</label>
-                                        {!! Form::select('local_atividade', $activityLocation, request()->get('local_atividade'), ['class' => 'form-control', 'id' => 'local_atividade']) !!}
+                                        {{ Form::select('local_atividade', $activityLocation, request()->get('local_atividade'), ['class' => 'form-control', 'id' => 'local_atividade']) }}
                                     </div>
 
                                 </div>
@@ -61,7 +61,7 @@
 
                             </div>
 
-                        {!! Form::close() !!}
+                        {{ Form::close() }}
 
                     </div>
 
@@ -92,11 +92,11 @@
 
                         @foreach($customersCollection as $customer)
                             <tr>
-                                <td>{!! $customer->id !!}</td>
-                                <td>{!! $customer->code !!}</td>
-                                <td>{!! $customer->name !!}</td>
-                                <td>{!! $customer->email !!}</td>
-                                <td>{!! (!empty($customer->phone) ? $customer->phone : $customer->main_mobile) !!}</td>
+                                <td>{{ $customer->id }}</td>
+                                <td>{{ $customer->code }}</td>
+                                <td>{{ $customer->name }}</td>
+                                <td>{{ $customer->email }}</td>
+                                <td>{{ (!empty($customer->phone) ? $customer->phone : $customer->main_mobile) }}</td>
                             </tr>
                         @endforeach
                         </tbody>

@@ -19,9 +19,9 @@
 
                         @include('partial.alerts')
 
-                        {!! Form::model($customer, ['route' => ['customer.update', $customer->id], 'class' => 'form-horizontal', 'name' => 'customer', 'id' => 'customer', 'method' => 'put', 'enctype' => 'multipart/form-data']) !!}
+                        {{ Form::model($customer, ['route' => ['customer.update', $customer->id], 'class' => 'form-horizontal', 'name' => 'customer', 'id' => 'customer', 'method' => 'put', 'enctype' => 'multipart/form-data']) }}
                         @include('dashboard.customer.partial.form')
-                        {!! Form::close() !!}
+                        {{ Form::close() }}
 
                     </div>
 

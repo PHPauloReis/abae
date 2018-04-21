@@ -19,7 +19,7 @@
 
                     <div class="panel-body">
 
-                        <form action="{!! route('chart_of_account.search') !!}" method="get">
+                        <form action="{{ route('chart_of_account.search') }}" method="get">
 
                             <div class="input-group container_busca">
                                 <input type="text" class="form-control" placeholder="O que você procura?" name="keywords" value="{{ Request::get('keywords') }}">
@@ -47,19 +47,19 @@
                             @if($chartOfAccount->count() > 0)
                                 @foreach($chartOfAccount as $item)
                             <tr>
-                                <td>{!! $item->id !!}</td>
-                                <td>{!! $item->title !!}</td>
-                                <td>{!! str_limit($item->description, 60) !!}</td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->title }}</td>
+                                <td>{{ str_limit($item->description, 60) }}</td>
                                 <td>
-                                    <a class="btn btn-default btn-xs" title="Editar" href="{!! route('chart_of_account.edit', $item->id) !!}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                    <a class="btn btn-danger btn-xs" title="Apagar" data-toggle="modal" data-target="#myModal_{!! $item->id !!}"><span class="glyphicon glyphicon-trash"></span> Excluir</a>
+                                    <a class="btn btn-default btn-xs" title="Editar" href="{{ route('chart_of_account.edit', $item->id) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                    <a class="btn btn-danger btn-xs" title="Apagar" data-toggle="modal" data-target="#myModal_{{ $item->id }}"><span class="glyphicon glyphicon-trash"></span> Excluir</a>
 
-                                    <div id="myModal_{!! $item->id !!}" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_{!! $item->id !!}" aria-hidden="false">
+                                    <div id="myModal_{{ $item->id }}" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_{{ $item->id }}" aria-hidden="false">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h4 class="modal-title" id="myModalLabel_{!! $item->id !!}">Confirmação de exclusão</h4>
+                                                    <h4 class="modal-title" id="myModalLabel_{{ $item->id }}">Confirmação de exclusão</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>Você tem certeza que deseja remover esse registro? Essa operação não poderá ser desfeita. Proceda com cautela</p>
@@ -100,7 +100,7 @@
 
                     <ul class="pagination">
                         @if($chartOfAccount->count() > 0)
-                            {!! $chartOfAccount->appends(request()->all())->links() !!}
+                            {{ $chartOfAccount->appends(request()->all())->links() }}
                         @endif
                     </ul>
 

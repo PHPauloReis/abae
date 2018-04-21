@@ -19,7 +19,7 @@
 
                     <div class="panel-body">
 
-                        <form action="{!! route('contribution.searchCustomersWithContribution') !!}" method="get">
+                        <form action="{{ route('contribution.searchCustomersWithContribution') }}" method="get">
 
                             <div class="row">
 
@@ -101,13 +101,13 @@
                             @if($customers->count() > 0)
                                 @foreach($customers as $customer)
                             <tr>
-                                <td>{!! $customer->id !!}</td>
-                                <td>{!! $customer->code !!}</td>
-                                <td>{!! $customer->name !!}</td>
-                                <td>{!! $customer->email !!}</td>
-                                <td>{!! (!empty($customer->phone) ? $customer->phone : $customer->main_mobile) !!}</td>
+                                <td>{{ $customer->id }}</td>
+                                <td>{{ $customer->code }}</td>
+                                <td>{{ $customer->name }}</td>
+                                <td>{{ $customer->email }}</td>
+                                <td>{{ (!empty($customer->phone) ? $customer->phone : $customer->main_mobile) }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" title="Pagamentos" href="{!! route('contribution.create', $customer->id) !!}"><span class="glyphicon glyphicon-usd"></span> Pagamentos</a>
+                                    <a class="btn btn-info btn-xs" title="Pagamentos" href="{{ route('contribution.create', $customer->id) }}"><span class="glyphicon glyphicon-usd"></span> Pagamentos</a>
                                 </td>
                             </tr>
                                 @endforeach
@@ -131,7 +131,7 @@
 
                     <ul class="pagination">
                         @if($customers->count() > 0)
-                        {!! $customers->links() !!}
+                        {{ $customers->links() }}
                         @endif
                     </ul>
 

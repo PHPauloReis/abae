@@ -37,20 +37,20 @@
                             @if($financialTransactions->count() > 0)
                                 @foreach($financialTransactions as $financialTransaction)
                             <tr>
-                                <td>{!! $financialTransaction->id !!}</td>
-                                <td>{!! $financialTransaction->chartOfAccount->title !!}</td>
-                                <td>R$ {!! number_format($financialTransaction->value, 2, ',', '.') !!}</td>
-                                <td>{!! $financialTransaction->transaction_date_formated !!}</td>
+                                <td>{{ $financialTransaction->id }}</td>
+                                <td>{{ $financialTransaction->chartOfAccount->title }}</td>
+                                <td>R$ {{ number_format($financialTransaction->value, 2, ',', '.') }}</td>
+                                <td>{{ $financialTransaction->transaction_date_formated }}</td>
                                 <td>
-                                    <a class="btn btn-default btn-xs" title="Editar" href="{!! route('financial_transaction.edit', $financialTransaction->id) !!}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                    <a class="btn btn-danger btn-xs" title="Apagar" data-toggle="modal" data-target="#myModal_{!! $financialTransaction->id !!}"><span class="glyphicon glyphicon-trash"></span> Excluir</a>
+                                    <a class="btn btn-default btn-xs" title="Editar" href="{{ route('financial_transaction.edit', $financialTransaction->id) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                    <a class="btn btn-danger btn-xs" title="Apagar" data-toggle="modal" data-target="#myModal_{{ $financialTransaction->id }}"><span class="glyphicon glyphicon-trash"></span> Excluir</a>
 
-                                    <div id="myModal_{!! $financialTransaction->id !!}" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_{!! $financialTransaction->id !!}" aria-hidden="false">
+                                    <div id="myModal_{{ $financialTransaction->id }}" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_{{ $financialTransaction->id }}" aria-hidden="false">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h4 class="modal-title" id="myModalLabel_{!! $financialTransaction->id !!}">Confirmação de exclusão</h4>
+                                                    <h4 class="modal-title" id="myModalLabel_{{ $financialTransaction->id }}">Confirmação de exclusão</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>Você tem certeza que deseja remover esse registro? Essa operação não poderá ser desfeita. Proceda com cautela</p>
@@ -91,7 +91,7 @@
 
                     <ul class="pagination">
                         @if($financialTransactions->count() > 0)
-                            {!! $financialTransactions->appends(request()->all())->links() !!}
+                            {{ $financialTransactions->appends(request()->all())->links() }}
                         @endif
                     </ul>
 

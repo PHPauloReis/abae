@@ -1,7 +1,7 @@
 @if(Session::has('success'))
     <div class="alert alert-success">
         <strong>Sucesso!</strong><br>
-        {!! Session::get('success') !!}
+        {{ Session::get('success') }}
     </div>
 @endif
 
@@ -9,7 +9,7 @@
     <div class="alert alert-danger">
         <button class="close" data-dismiss="alert"></button>
         <strong>Erros!</strong><br>
-        {!! Session::get('error') !!}
+        {{ Session::get('error') }}
     </div>
 @endif
 
@@ -19,7 +19,7 @@
         <strong>Erros!</strong><br>
         <ul>
             @foreach(Session::get('errors')->all() as $error)
-                <li>{!! $error !!}</li>
+                <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>

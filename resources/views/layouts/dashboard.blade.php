@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <base href="{!! URL::to('/') !!}">
+    <base href="{{ URL::to('/') }}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -164,23 +164,23 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="themes">
-                        <li><a href="{!! route('customer.create') !!}">Cadastrar praticante</a></li>
+                        <li><a href="{{ route('customer.create') }}">Cadastrar praticante</a></li>
                         <li class="divider"></li>
-                        <li><a href="{!! route('customer.index') !!}">Praticantes ativos</a></li>
-                        <li><a href="{!! route('customer.downed') !!}">Praticantes baixados</a></li>
+                        <li><a href="{{ route('customer.index') }}">Praticantes ativos</a></li>
+                        <li><a href="{{ route('customer.downed') }}">Praticantes baixados</a></li>
                     </ul>
                 </li>
-                <li><a href="{!! route('contribution.list.customers') !!}"><span class="glyphicon glyphicon-usd"></span> Constribuições</a></li>
+                <li><a href="{{ route('contribution.list.customers') }}"><span class="glyphicon glyphicon-usd"></span> Constribuições</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">
                         <span class="glyphicon glyphicon-inbox"></span> Caixa
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="themes">
-                        <li><a href="{!! route('financial_transaction.create') !!}">Cadastrar conta</a></li>
+                        <li><a href="{{ route('financial_transaction.create') }}">Cadastrar conta</a></li>
                         <li class="divider"></li>
-                        <li><a href="{!! route('financial_transaction.payables') !!}">Contas à pagar</a></li>
-                        <li><a href="{!! route('financial_transaction.receivables') !!}">Contas à receber</a></li>
+                        <li><a href="{{ route('financial_transaction.payables') }}">Contas à pagar</a></li>
+                        <li><a href="{{ route('financial_transaction.receivables') }}">Contas à receber</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -189,10 +189,10 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="themes">
-                        <li><a href="{!! route('report.customer') !!}">Praticantes</a></li>
-                        <li><a href="{!! route('report.contribution') !!}">Contribuições</a></li>
-                        <li><a href="{!! route('customer.index') !!}">Contas a pagar</a></li>
-                        <li><a href="{!! route('customer.index') !!}">Contas a receber</a></li>
+                        <li><a href="{{ route('report.customer') }}">Praticantes</a></li>
+                        <li><a href="{{ route('report.contribution') }}">Contribuições</a></li>
+                        <li><a href="{{ route('customer.index') }}">Contas a pagar</a></li>
+                        <li><a href="{{ route('customer.index') }}">Contas a receber</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -201,8 +201,8 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="themes">
-                        <li><a href="{!! route('chart_of_account.create') !!}">Cadastrar plano de conta</a></li>
-                        <li><a href="{!! route('chart_of_account.index') !!}">Planos de conta cadastrados</a></li>
+                        <li><a href="{{ route('chart_of_account.create') }}">Cadastrar plano de conta</a></li>
+                        <li><a href="{{ route('chart_of_account.index') }}">Planos de conta cadastrados</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -211,10 +211,10 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="themes">
-                        <li><a href="{!! route('dashboard.administrator.editPassword') !!}">Atualizar minha senha</a></li>
+                        <li><a href="{{ route('dashboard.administrator.editPassword') }}">Atualizar minha senha</a></li>
                         @if(auth()->user()->access_level == 9)
-                        <li><a href="{!! route('administrator.create') !!}">Novo administrador</a></li>
-                        <li><a href="{!! route('administrator.index') !!}">Administradores cadastrados</a></li>
+                        <li><a href="{{ route('administrator.create') }}">Novo administrador</a></li>
+                        <li><a href="{{ route('administrator.index') }}">Administradores cadastrados</a></li>
                         <li class="divider"></li>
                         <li>
                             <a href="{{ route('logout') }}"

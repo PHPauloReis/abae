@@ -19,7 +19,7 @@
 
                     <div class="panel-body">
 
-                        <form action="{!! route('administrator.search') !!}" method="get">
+                        <form action="{{ route('administrator.search') }}" method="get">
 
                             <div class="input-group container_busca">
                                 <input type="text" class="form-control" placeholder="O que você procura?" name="keywords" value="{{ Request::get('keywords') }}">
@@ -48,20 +48,20 @@
                             @if($administrators->count() > 0)
                                 @foreach($administrators as $administrator)
                             <tr>
-                                <td>{!! $administrator->id !!}</td>
-                                <td>{!! $administrator->name !!}</td>
-                                <td>{!! $administrator->username !!}</td>
-                                <td>{!! $administrator->email !!}</td>
+                                <td>{{ $administrator->id }}</td>
+                                <td>{{ $administrator->name }}</td>
+                                <td>{{ $administrator->username }}</td>
+                                <td>{{ $administrator->email }}</td>
                                 <td>
-                                    <a class="btn btn-default btn-xs" title="Editar" href="{!! route('administrator.edit', $administrator->id) !!}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                    <a class="btn btn-danger btn-xs" title="Apagar" data-toggle="modal" data-target="#myModal_{!! $administrator->id !!}"><span class="glyphicon glyphicon-trash"></span> Excluir</a>
+                                    <a class="btn btn-default btn-xs" title="Editar" href="{{ route('administrator.edit', $administrator->id) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                    <a class="btn btn-danger btn-xs" title="Apagar" data-toggle="modal" data-target="#myModal_{{ $administrator->id }}"><span class="glyphicon glyphicon-trash"></span> Excluir</a>
 
-                                    <div id="myModal_{!! $administrator->id !!}" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_{!! $administrator->id !!}" aria-hidden="false">
+                                    <div id="myModal_{{ $administrator->id }}" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_{{ $administrator->id }}" aria-hidden="false">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h4 class="modal-title" id="myModalLabel_{!! $administrator->id !!}">Confirmação de exclusão</h4>
+                                                    <h4 class="modal-title" id="myModalLabel_{{ $administrator->id }}">Confirmação de exclusão</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>Você tem certeza que deseja remover esse registro? Essa operação não poderá ser desfeita. Proceda com cautela</p>
@@ -102,7 +102,7 @@
 
                     <ul class="pagination">
                         @if($administrators->count() > 0)
-                        {!! $administrators->links() !!}
+                        {{ $administrators->links() }}
                         @endif
                     </ul>
 

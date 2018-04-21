@@ -19,7 +19,7 @@
 
                         @include('partial.alerts')
 
-                        {!! Form::model($administrator, ['route' => [$route], 'class' => 'form-horizontal', 'name' => 'cadastro_texto', 'id' => 'cadastro_texto', 'method' => 'put', 'enctype' => 'multipart/form-data']) !!}
+                        {{ Form::model($administrator, ['route' => [$route], 'class' => 'form-horizontal', 'name' => 'cadastro_texto', 'id' => 'cadastro_texto', 'method' => 'put', 'enctype' => 'multipart/form-data']) }}
 
                         <div class="col-md-12">
 
@@ -27,7 +27,7 @@
 
                                 <div class="col-md-12 form-group">
                                     <label for="old_password">Senha antiga</label>
-                                    {!! Form::password('old_password', ['class' => 'form-control', 'id' => 'old_password', 'placeholder' => '******']) !!}
+                                    {{ Form::password('old_password', ['class' => 'form-control', 'id' => 'old_password', 'placeholder' => '******']) }}
                                 </div>
 
                             </div>
@@ -36,12 +36,12 @@
 
                                 <div class="col-md-12 form-group">
                                     <label for="password">Nova senha</label>
-                                    {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => '******']) !!}
+                                    {{ Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => '******']) }}
                                 </div>
 
                                 <div class="col-md-12 form-group">
                                     <label for="password_confirmation">Confirme sua nova senha</label>
-                                    {!! Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password_confirmation', 'placeholder' => '******']) !!}
+                                    {{ Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password_confirmation', 'placeholder' => '******']) }}
                                 </div>
 
                             </div>
@@ -56,7 +56,7 @@
 
                         </div>
 
-                        {!! Form::close() !!}
+                        {{ Form::close() }}
 
                     </div>
 

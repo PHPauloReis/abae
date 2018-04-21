@@ -19,9 +19,9 @@
 
                         @include('partial.alerts')
 
-                        {!! Form::open(['route' => 'chart_of_account.store', 'class' => 'form-horizontal', 'name' => 'chart_of_account', 'id' => 'chart_of_account', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
+                        {{ Form::open(['route' => 'chart_of_account.store', 'class' => 'form-horizontal', 'name' => 'chart_of_account', 'id' => 'chart_of_account', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
                             @include('dashboard.chartOfAccount.partial.form')
-                        {!! Form::close() !!}
+                        {{ Form::close() }}
 
                     </div>
 

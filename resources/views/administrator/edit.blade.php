@@ -19,7 +19,7 @@
 
                         @include('partial.alerts')
 
-                        {!! Form::model($administrator, ['route' => ['administrator.update', $administrator->id], 'class' => 'form-horizontal', 'name' => 'administrator', 'id' => 'administrator', 'method' => 'put', 'enctype' => 'multipart/form-data']) !!}
+                        {{ Form::model($administrator, ['route' => ['administrator.update', $administrator->id], 'class' => 'form-horizontal', 'name' => 'administrator', 'id' => 'administrator', 'method' => 'put', 'enctype' => 'multipart/form-data']) }}
 
                         <div class="col-md-12">
 
@@ -28,28 +28,28 @@
                                 <div class="form-group">
                                     <label for="name" class="col-sm-3 control-label">Nome <span class="red-text">*</span></label>
                                     <div class="col-sm-6">
-                                        {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name', 'placeholder' => 'Nome do administrador']) !!}
+                                        {{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name', 'placeholder' => 'Nome do administrador']) }}
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="email" class="col-sm-3 control-label">E-mail <span class="red-text">*</span></label>
                                     <div class="col-sm-6">
-                                        {!! Form::text('email', null, ['class' => 'form-control', 'id' => 'email', 'name' => 'email', 'placeholder' => 'E-mail principal']) !!}
+                                        {{ Form::text('email', null, ['class' => 'form-control', 'id' => 'email', 'name' => 'email', 'placeholder' => 'E-mail principal']) }}
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="username" class="col-sm-3 control-label">Username <span class="red-text">*</span></label>
                                     <div class="col-sm-4">
-                                        {!! Form::text('username', null, ['class' => 'form-control', 'id' => 'username', 'placeholder' => 'Ex.: mariarita']) !!}
+                                        {{ Form::text('username', null, ['class' => 'form-control', 'id' => 'username', 'placeholder' => 'Ex.: mariarita']) }}
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="access_level" class="col-sm-3 control-label">Nível de acesso <span class="red-text">*</span></label>
                                     <div class="col-sm-4">
-                                        {!! Form::select('access_level', $userRoles, null, ['class' => 'form-control', 'id' => 'access_level']) !!}
+                                        {{ Form::select('access_level', $userRoles, null, ['class' => 'form-control', 'id' => 'access_level']) }}
                                     </div>
                                 </div>
 
@@ -60,14 +60,14 @@
                                 <div class="form-group">
                                     <label for="password" class="col-sm-3 control-label">Senha <span class="red-text">*</span></label>
                                     <div class="col-sm-4">
-                                        {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => '******']) !!}
+                                        {{ Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => '******']) }}
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password_confirmation" class="col-sm-3 control-label">Confirme sua senha <span class="red-text">*</span></label>
                                     <div class="col-sm-4">
-                                        {!! Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password_confirmation', 'placeholder' => '******']) !!}
+                                        {{ Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password_confirmation', 'placeholder' => '******']) }}
                                     </div>
                                 </div>
 
@@ -87,7 +87,7 @@
 
                         </div>
 
-                        {!! Form::close() !!}
+                        {{ Form::close() }}
 
                     </div>
 

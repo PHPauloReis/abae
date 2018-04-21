@@ -5,14 +5,14 @@
         <div class="form-group">
             <label for="title" class="col-sm-3 control-label">Título <span class="red-text">*</span></label>
             <div class="col-sm-6">
-                {!! Form::text('title', null, ['class' => 'form-control', 'id' => 'title', 'name' => 'title', 'placeholder' => 'Ex.: Conta de Telefone']) !!}
+                {{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title', 'name' => 'title', 'placeholder' => 'Ex.: Conta de Telefone']) }}
             </div>
         </div>
 
         <div class="form-group">
             <label for="description" class="col-sm-3 control-label">Descrição <span class="red-text">*</span></label>
             <div class="col-sm-6">
-                {!! Form::textarea('description', null, ['class' => 'form-control', 'id' => 'description', 'name' => 'description', 'rows' => '4']) !!}
+                {{ Form::textarea('description', null, ['class' => 'form-control', 'id' => 'description', 'name' => 'description', 'rows' => '4']) }}
             </div>
         </div>
 

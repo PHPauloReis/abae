@@ -19,9 +19,9 @@
 
                         @include('partial.alerts')
 
-                        {!! Form::open(['route' => 'financial_transaction.store', 'class' => 'form-horizontal', 'name' => 'financial_transaction', 'id' => 'financial_transaction', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
+                        {{ Form::open(['route' => 'financial_transaction.store', 'class' => 'form-horizontal', 'name' => 'financial_transaction', 'id' => 'financial_transaction', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
                             @include('dashboard.financialTransaction.partial.form')
-                        {!! Form::close() !!}
+                        {{ Form::close() }}
 
                     </div>
 

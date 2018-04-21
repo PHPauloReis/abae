@@ -19,9 +19,9 @@
 
                         @include('partial.alerts')
 
-                        {!! Form::model($chartOfAccount, ['route' => ['chart_of_account.update', $chartOfAccount->id], 'class' => 'form-horizontal', 'name' => 'chart_of_account', 'id' => 'chart_of_account', 'method' => 'put', 'enctype' => 'multipart/form-data']) !!}
+                        {{ Form::model($chartOfAccount, ['route' => ['chart_of_account.update', $chartOfAccount->id], 'class' => 'form-horizontal', 'name' => 'chart_of_account', 'id' => 'chart_of_account', 'method' => 'put', 'enctype' => 'multipart/form-data']) }}
                         @include('dashboard.chartOfAccount.partial.form')
-                        {!! Form::close() !!}
+                        {{ Form::close() }}
 
                     </div>
 
