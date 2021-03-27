@@ -58,7 +58,7 @@ class FinancialTransactionController extends Controller
     public function create()
     {
         $chartOfAccount = $this->chartOfAccountRepository->all()->pluck('title', 'id')->toArray();
-        $chartOfAccount = array_merge(['' => '---'], $chartOfAccount);
+        array_unshift($chartOfAccount, '---');
 
         $type = ['' => '---', 1 => 'Receita', 2 => 'Despesa'];
 
